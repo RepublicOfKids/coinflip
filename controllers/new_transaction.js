@@ -1,5 +1,3 @@
-var secrets = require('../config/secrets');
-
 /**
  * GET /new_transaction
  * Contact form page.
