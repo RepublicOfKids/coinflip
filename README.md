@@ -33,7 +33,7 @@ mongo
 
 Notice the file `config/secrets.sample.js`. Duplicate this file into `config/secrets.js` and fill out the appropriate client and app ids. 
 
-- Facebook: http://developer.facebook.com
+- Facebook: https://developer.facebook.com
 - Coinbase: https://coinbase.com/oauth/applications
 
 
