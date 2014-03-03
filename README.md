@@ -1,4 +1,4 @@
-# Coinflip
+# Coinflip [![Build Status](https://travis-ci.org/RepublicOfKids/coinflip.png?branch=master)](https://travis-ci.org/RepublicOfKids/coinflip)
 
 ## Install
 
