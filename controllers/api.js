@@ -1,5 +1,5 @@
 var secrets = require('../config/secrets');
-var User = require('../models/User');
+// var User = require('../models/User');
 var querystring = require('querystring');
 var validator = require('validator');
 var async = require('async');
@@ -305,10 +305,10 @@ exports.getPayPal = function(req, res, next) {
  * PayPal SDK example.
  */
 
-exports.getPayPalSuccess = function(req, res, next) {
+exports.getPayPalSuccess = function(req, res) {
   var payment_id = req.session.payment_id;
   var payment_details = { 'payer_id': req.query.PayerID };
-  paypal.payment.execute(payment_id, payment_details, function(error, payment) {
+  paypal.payment.execute(payment_id, payment_details, function(error) {
     if (error) {
       res.render('api/paypal', {
         result: true,
@@ -328,7 +328,7 @@ exports.getPayPalSuccess = function(req, res, next) {
  * PayPal SDK example.
  */
 
-exports.getPayPalCancel = function(req, res, next) {
+exports.getPayPalCancel = function(req, res) {
   req.session.payment_id = null;
   res.render('api/paypal', {
     result: true,
@@ -388,7 +388,7 @@ exports.getSteam = function(req, res, next) {
  * Twilio API example.
  */
 
-exports.getTwilio = function(req, res, next) {
+exports.getTwilio = function(req, res) {
   res.render('api/twilio', {
     title: 'Twilio API'
   });
@@ -408,7 +408,7 @@ exports.postTwilio = function(req, res, next) {
   };
   twilio.sendMessage(message, function(err, responseData) {
     if (err) return next(err.message);
-    req.flash('success', { msg: 'Text sent to ' + responseData.to + '.'})
+    req.flash('success', { msg: 'Text sent to ' + responseData.to + '.'});
     res.redirect('/api/twilio');
   });
 };

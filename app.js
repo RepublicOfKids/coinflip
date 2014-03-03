@@ -54,7 +54,7 @@ mongoose.connection.on('error', function() {
 var hour = 3600000;
 var day = (hour * 24);
 var week = (day * 7);
-var month = (day * 30);
+// var month = (day * 30);
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
