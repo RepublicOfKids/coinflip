@@ -29,7 +29,7 @@ Ensure that mongo is running on your machine somewhere:
 mongo
 ```
 
-### Secrets.js
+### Edit secrets.js
 
 Notice the file `config/secrets.sample.js`. Duplicate this file into `config/secrets.js` and fill out the appropriate client and app ids. 
 
