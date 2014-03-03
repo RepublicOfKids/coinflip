@@ -2,6 +2,7 @@ var _ = require('underscore');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+var CoinbaseStrategy = require('../modules/passport-coinbase').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -87,9 +88,38 @@ passport.use(new FacebookStrategy(secrets.facebook, function(req, accessToken, r
   }
 }));
 
+
+/**
+ * Sign in with Coinbase.
+ */
+ 
+passport.use(new CoinbaseStrategy(secrets.coinbase, function(req, accessToken, refreshToken, profile, done) {
+  if (req.user) {
+    User.findOne({ $or: [{ coinbase: profile.id }, { email: profile.email }] }, function(err, existingUser) {
+      if (!existingUser) {
+        req.flash('errors', { msg: 'There needs to already have a user to link up a Coinbase account.' });
+        done(err);
+      } else { // for now just overwriting the existing user (there should already be a facebook account linked)
+        User.findById(req.user.id, function(err, user) {
+          user.coinbase = profile.id;
+          user.tokens.push({ kind: 'coinbase', accessToken: accessToken });
+          user.profile.name = user.profile.name || profile.displayName;
+          user.save(function(err) {
+            req.flash('info', { msg: 'Coinbase account has been linked.' });
+            done(err, user);
+          });
+        });
+      }
+    });
+  }
+  // TODO: if there's no user
+})); 
+ 
+
 /**
  * Sign in with GitHub.
  */
+
 
 passport.use(new GitHubStrategy(secrets.github, function(req, accessToken, refreshToken, profile, done) {
   if (req.user) {

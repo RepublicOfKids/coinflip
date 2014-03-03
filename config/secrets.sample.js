@@ -37,6 +37,14 @@ module.exports = {
     passReqToCallback: true
   },
 
+  coinbaseAuth: true,
+  coinbase: {
+    clientID: 'Your Client ID',
+    clientSecret: 'Your Client Secret',
+    callbackUrl: '/auth/coinbase/callback',
+    passReqToCallback: true
+  },
+
   githubAuth: false,
   github: {
     clientID: 'Your Client ID',

@@ -87,6 +87,12 @@ block content
     else
       p: a(href='/auth/facebook') Link your Facebook account
 
+  if secrets.coinbaseAuth
+    if user.coinbase
+      p: a.text-danger(href='/account/unlink/coinbase') Unlink your Coinbase account
+    else
+      p: a(href='/auth/coinbase') Link your Coinbase account
+
   if secrets.twitterAuth
     if user.twitter
       p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account

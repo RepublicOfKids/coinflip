@@ -147,6 +147,8 @@ app.get('/api/linkedin', passportConf.isAuthenticated, passportConf.isAuthorized
 
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/login' }));
+app.get('/auth/coinbase', passport.authenticate('coinbase'));
+app.get('/auth/coinbase/callback', passport.authenticate('coinbase', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github', { successRedirect: '/', failureRedirect: '/login' }));
 app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
