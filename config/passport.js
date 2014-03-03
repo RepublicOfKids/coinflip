@@ -113,7 +113,7 @@ passport.use(new CoinbaseStrategy(secrets.coinbase, function(req, accessToken, r
     });
   }
   // TODO: if there's no user
-})); 
+}));
  
 
 /**

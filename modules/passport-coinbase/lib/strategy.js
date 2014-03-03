@@ -1,10 +1,9 @@
 /**
  * Module dependencies.
  */
- var util = require('util')
-   , uri = require('url')
-   , OAuth2Strategy = require('passport-oauth').OAuth2Strategy
-   , InternalOAuthError = require('passport-oauth').InternalOAuthError;
+ var util = require('util'),
+   OAuth2Strategy = require('passport-oauth').OAuth2Strategy,
+   InternalOAuthError = require('passport-oauth').InternalOAuthError;
 
 
 /**
@@ -31,7 +30,7 @@ util.inherits(Strategy, OAuth2Strategy);
 
 
 Strategy.prototype.userProfile = function(accessToken, done) {
-  this._oauth2.get(this._userProfileURL, accessToken, function (err, body, res) {
+  this._oauth2.get(this._userProfileURL, accessToken, function (err, body) {
     if (err) { return done(new InternalOAuthError('failed to fetch user profile', err)); }
     
     try {
