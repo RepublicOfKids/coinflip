@@ -31,8 +31,8 @@ module.exports = {
 
   facebookAuth: true,
   facebook: {
-    clientID: '487538848018256',
-    clientSecret: '646a1c3fdf5c809172496189d4dfaf45',
+    clientID: 'Your Client ID',
+    clientSecret: 'Your Client Secret',
     callbackURL: '/auth/facebook/callback',
     passReqToCallback: true
   },
