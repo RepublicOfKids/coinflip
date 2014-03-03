@@ -32,6 +32,7 @@ exports.getContact = function(req, res) {
  * @param message
  */
 
+
 exports.postContact = function(req, res) {
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('email', 'Email is not valid').isEmail();
