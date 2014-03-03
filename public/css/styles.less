@@ -3,6 +3,7 @@
 @import "lib/bootstrap/bootstrap";
 @import "lib/bootstrap-social";
 @import "themes/default";
+//@import "lib/bootstrap/variables.less";
 
 // Scaffolding
 // ---- ---------------------
@@ -82,4 +83,15 @@ body {
   color: #fff;
   padding: 3px;
   bottom: 25px;
+}
+
+// Buttons
+.btn.btn-pay {
+  background-color: @brand-primary;
+  color: white;
+}
+
+.btn.btn-charge {
+  background-color: @brand-warning;
+  color: white;
 }

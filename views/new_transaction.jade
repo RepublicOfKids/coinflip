@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .page-header
+    h3 New Transaction
+
+  form.form-horizontal(role='form', method='POST')
+    input(type='hidden', name='_csrf', value=token)
+    .form-group
+      label(class='col-sm-2 control-label', for='name') To
+      .col-sm-8
+        input.form-control(type='text', name='name', id='name', autofocus=true)
+    .form-group
+      label(class='col-sm-2 control-label', for='email') Amount
+      .col-sm-8
+        input.form-control(type='text', name='email', id='email')
+    .form-group
+      label(class='col-sm-2 control-label', for='message') What's it for?
+      .col-sm-8
+        textarea.form-control(type='text', name='message', id='message', rows='7')
+    .form-group
+      .col-sm-offset-2.col-sm-2
+        button.btn.btn-pay(type='submit')
+          i.fa.fa-btc
+          | Pay
+      .col-sm-2
+        button.btn.btn-charge(type='submit')
+          i.fa.fa-btc
+          | Charge
