@@ -29,13 +29,6 @@ Ensure that mongo is running on your machine somewhere:
 mongo
 ```
 
-Install typeahead.js for autocomplete search functionality
-
-```
-npm install -g bower
-bower install typeahead.js
-```
-
 ### Edit secrets.js
 
 Notice the file `config/secrets.sample.js`. Duplicate this file into `config/secrets.js` and fill out the appropriate client and app ids. 
