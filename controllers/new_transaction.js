@@ -7,7 +7,7 @@ var graph = require('fbgraph');
  * Contact form page.
  */
 
-exports.getNewTransaction = function(req, res) {
+exports.getNewTransaction = function(req, res, next) {
   var token = _.findWhere(req.user.tokens, { kind: 'facebook' });
   graph.setAccessToken(token.accessToken);
   async.parallel({
