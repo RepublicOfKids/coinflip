@@ -1,6 +1,20 @@
 extends layout
 
 block content
+  script(src="http://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.1/typeahead.bundle.min.js")
+  script(type='text/javascript').
+    $(document).ready(function() {
+      var names = new Bloodhound({
+        datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: #{friends}
+      });
+      names.initialize();
+      $('.typeahead').typeahead(null, {
+        displayKey: 'name',
+        source: names.ttAdapter()
+      });
+    });
   .page-header
     h3 New Transaction
 
@@ -9,15 +23,16 @@ block content
     .form-group
       label(class='col-sm-2 control-label', for='name') To
       .col-sm-8
-        input.form-control(type='text', name='name', id='name', autofocus=true)
+        .example-numbers
+          input.form-control(class='tt-query typeahead', type='text', autofocus=true, autocomplete='off', spellcheck='false', dir='auto', style='position: relative; vertical-align: top; background-color: transparent;')
     .form-group
-      label(class='col-sm-2 control-label', for='email') Amount
+      label(class='col-sm-2 control-label', for='amount') Amount
       .col-sm-8
-        input.form-control(type='text', name='email', id='email')
+        input.form-control(class='tt-query', type='text', name='amount', id='amount')
     .form-group
       label(class='col-sm-2 control-label', for='message') What's it for?
       .col-sm-8
-        textarea.form-control(type='text', name='message', id='message', rows='7')
+        textarea.form-control(class='tt-query', type='text', name='message', id='message', rows='7')
     .form-group
       .col-sm-offset-2.col-sm-2
         button.btn.btn-pay(type='submit')
