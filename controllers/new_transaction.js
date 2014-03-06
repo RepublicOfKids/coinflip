@@ -13,7 +13,7 @@ exports.getNewTransaction = function(req, res) {
   async.parallel({
      getMyFriends: function(done) {
         graph.get(req.user.facebook + '/friends', function(err, friends) {
-	   done(err, friends.data);
+          done(err, friends.data);
 	});
      }
   },
