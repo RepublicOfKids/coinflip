@@ -23,11 +23,11 @@ exports.getNewTransaction = function(req, res, next) {
     var friendsLength = Object.keys(friends).length;
     var friendsJson = [];
     for (var i = 0; i < friendsLength; i++) {
-	friendsJson.push("{name:'"+friends[i].name+"'}");
+	friendsJson.push( { name : friends[i].name } );
     }
     res.render('new_transaction', {
       title: 'New Transaction',
-      friends: "["+friendsJson+"]"
+      friends: [ friendsJson ]
     });
   });
 };
