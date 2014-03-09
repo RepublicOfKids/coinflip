@@ -1,12 +1,16 @@
 $(document).ready(function() {
   var names = new Bloodhound({
-    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.name); },
+    datumTokenizer: function(d) {
+      return Bloodhound.tokenizers.whitespace(d.name);
+    },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: #{friends}
+    local: window.cf.dump.friends
   });
-    names.initialize();
-    $('.typeahead').typeahead(null, {
-      displayKey: 'name',
-      source: names.ttAdapter()
-    });
+
+  names.initialize();
+
+  $('.typeahead').typeahead(null, {
+    displayKey: 'name',
+    source: names.ttAdapter()
+  });
 });
