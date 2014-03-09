@@ -20,4 +20,14 @@ cf.apps.new_transaction.prototype.initializeForm = function() {
       source: names.ttAdapter()
     });
   }
+
+  $(".currency-btns label").on('click', function(event) {
+    var $target = $(event.target);
+
+    if ($target.is("#optionBTC")) {
+      $('#currencyLabel').html('<i class="fa fa-btc"></i>');
+    } else if ($target.is("#optionUSD")) {
+      $('#currencyLabel').html('<i class="fa fa-usd"></i>');
+    }
+  });
 };

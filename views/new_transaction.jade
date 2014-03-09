@@ -13,15 +13,16 @@ block content
         .example-numbers
           input#transactionRecipient.form-control(class='typeahead', type='text', autofocus=true, autocomplete='off', spellcheck='false', dir='auto')
     .form-group
-      label(class='col-xs-2 control-label', for='amount') Amount
+      label#currencyLabel(class='col-xs-2 control-label', for='amount')
+        i.fa.fa-btc
       .col-xs-8
-        .btn-group.btn-group-justified
-          .btn-group
-            button.btn.btn-default(type='button')
-              i.fa.fa-usd
-          .btn-group
-            button.btn.btn-default(type='button')
-              i.fa.fa-btc
+        .btn-group.btn-group-justified.currency-btns(data-toggle='buttons')
+          label.btn.btn-primary.active#optionBTC
+            input(type='radio')
+            i.fa.fa-btc
+          label.btn.btn-primary#optionUSD
+            input(type='radio')
+            i.fa.fa-usd
         input.form-control(type='text', name='amount', id='amount')
     .form-group
       label(class='col-xs-2 control-label', for='message')
