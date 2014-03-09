@@ -7,24 +7,33 @@ block content
   form.form-horizontal(role='form', method='POST')
     input(type='hidden', name='_csrf', value=token)
     .form-group
-      label(class='col-sm-2 control-label', for='name') To
-      .col-sm-8
+      label(class='col-xs-2 control-label', for='name')
+        i.fa.fa-user
+      .col-xs-8
         .example-numbers
-          input.form-control(class='tt-query typeahead', type='text', autofocus=true, autocomplete='off', spellcheck='false', dir='auto', style='position: relative; vertical-align: top; background-color: transparent;')
+          input.form-control(class='typeahead', type='text', autofocus=true, autocomplete='off', spellcheck='false', dir='auto')
     .form-group
-      label(class='col-sm-2 control-label', for='amount') Amount
-      .col-sm-8
-        input.form-control(class='tt-query', type='text', name='amount', id='amount')
+      label(class='col-xs-2 control-label', for='amount') Amount
+      .col-xs-8
+        .btn-group.btn-group-justified
+          .btn-group
+            button.btn.btn-default(type='button')
+              i.fa.fa-usd
+          .btn-group
+            button.btn.btn-default(type='button')
+              i.fa.fa-btc
+        input.form-control(type='text', name='amount', id='amount')
     .form-group
-      label(class='col-sm-2 control-label', for='message') What's it for?
-      .col-sm-8
-        textarea.form-control(class='tt-query', type='text', name='message', id='message', rows='7')
+      label(class='col-xs-2 control-label', for='message')
+        i.fa.fa-comment
+      .col-xs-8
+        textarea.form-control(type='text', name='message', id='message', rows='7')
     .form-group
-      .col-sm-offset-2.col-sm-2
+      .col-xs-offset-2.col-xs-2
         button.btn.btn-pay(type='submit')
           i.fa.fa-btc
           | Pay
-      .col-sm-2
+      .col-xs-2
         button.btn.btn-charge(type='submit')
           i.fa.fa-btc
           | Charge
