@@ -47,7 +47,7 @@
     "$":          true,
     "_":          true,
     "Backbone":   true,
-    "flowplayer": true
+    "Bloodhound": true
   },
   "regexdash":    false,
   "scripturl":    false,
