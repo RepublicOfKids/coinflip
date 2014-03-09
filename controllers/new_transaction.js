@@ -1,6 +1,7 @@
 var async = require('async');
 var _ = require('underscore');
 var graph = require('fbgraph');
+var coinbase_api = require('./coinbase_api.js');
 
 /**
  * GET /new_transaction
@@ -14,21 +15,28 @@ exports.getNewTransaction = function(req, res, next) {
      getMyFriends: function(done) {
         graph.get(req.user.facebook + '/friends', function(err, friends) {
           done(err, friends.data);
-	});
+        });
+     },
+     getExchangeRates: function(done) {
+       coinbase_api.getExchangeRates({}, done);
      }
   },
   function(err, results) {
-    if (err) return next(err);
+    if (err) { return next(err); }
     var friends = results.getMyFriends;
-    var friendsLength = Object.keys(friends).length;
+    var exchangeRates = _.pick(JSON.parse(results.getExchangeRates), 'usd_to_btc');
     var friendsJson = [];
-    for (var i = 0; i < friendsLength; i++) {
-      friendsJson.push( { name : friends[i].name } );
-    }
+
+    _.each(friends, function(friend) {
+      friendsJson.push( { name : friend.name } );
+    });
+
+
     res.render('new_transaction', {
       title: 'New Transaction',
       dump: {
-        friends: friendsJson
+        friends: friendsJson,
+        rates: exchangeRates
       }
     });
   });

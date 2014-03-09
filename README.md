@@ -5,7 +5,7 @@
 
 ### Getting started
 
-Coinflip runs on node v0.10.26+. If you dont have nodejs on your hardware use something like homebrew to install it.
+Coinflip runs on node v0.10.26+. If you dont have nodejs on your hardware use something like [homebrew](http://brew.sh/) to install it:
 
 ```
 brew install node
@@ -33,7 +33,8 @@ mongo
 
 Notice the file `config/secrets.sample.js`. Duplicate this file into `config/secrets.js` and fill out the appropriate client and app ids. 
 
-- Facebook: http://developer.facebook.com
+- Facebook: https://developer.facebook.com
+- Coinbase: https://coinbase.com/oauth/applications
 
 
 ### Start your sever
