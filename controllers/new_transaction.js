@@ -33,6 +33,7 @@ exports.getNewTransaction = function(req, res, next) {
 
 
     res.render('new_transaction', {
+      controllerJs: 'new_transaction',
       title: 'New Transaction',
       dump: {
         friends: friendsJson,

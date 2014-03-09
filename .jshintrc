@@ -47,7 +47,8 @@
     "$":          true,
     "_":          true,
     "Backbone":   true,
-    "Bloodhound": true
+    "Bloodhound": true,
+    "cf":         true
   },
   "regexdash":    false,
   "scripturl":    false,

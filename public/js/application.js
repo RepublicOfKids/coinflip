@@ -13,3 +13,4 @@
 //= require lib/bootstrap.min
 //= require lib/typeahead.bundle.min
 //= require main
+//= require new_transaction
