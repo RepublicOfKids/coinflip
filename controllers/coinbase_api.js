@@ -9,6 +9,7 @@ exports.getExchangeRates = function(params, cb) {
   });
 };
 
+// @Todo: Figure this out.
 exports.sendMoney = function(params, cb) {
   if (!params.user) {
     cb(new Error('Missing or Invalid User Id'));
@@ -18,15 +19,13 @@ exports.sendMoney = function(params, cb) {
   });
 };
 
+// @Todo: Figure this out.
 exports.getBalance = function(params, cb) {
   if (!params.user) {
     cb(new Error('Missing or Invalid User Id'));
   }
   User.findById(params.user, function(err, user) {
     console.log(user);
-    request.get({ url: BASE_URI + '/account/balance'}, function(err, response, balance) {
-      cb(err, user);
-    });
-
+    cb(err, user);
   });
 };
