@@ -8,10 +8,6 @@ var userSchema = new mongoose.Schema({
 
   facebook: String,
   coinbase: String,
-  twitter: String,
-  google: String,
-  github: String,
-  linkedin: String,
   tokens: Array,
 
   profile: {
