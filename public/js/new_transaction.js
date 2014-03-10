@@ -1,3 +1,11 @@
+function usdToBtc(usd) {
+  return (Number(usd) * Number(window.cf.dump.rates.usd_to_btc));
+}
+
+function btcToUsd(btc) {
+  return (Number(btc) / Number(window.cf.dump.rates.usd_to_btc));
+}
+
 cf.apps.new_transaction = function() {
   this.initializeForm();
 };
@@ -23,11 +31,16 @@ cf.apps.new_transaction.prototype.initializeForm = function() {
 
   $(".currency-btns label").on('click', function(event) {
     var $target = $(event.target);
+    var $amount = $('#amount');
+    var $currencyLabel = $('#currencyLabel');
 
-    if ($target.is("#optionBTC")) {
-      $('#currencyLabel').html('<i class="fa fa-btc"></i>');
-    } else if ($target.is("#optionUSD")) {
-      $('#currencyLabel').html('<i class="fa fa-usd"></i>');
+    // TODO: Check if valid currency format
+    if ($target.is("#optionBTC:not(.active)")) {
+      $currencyLabel.html('<i class="fa fa-btc"></i>');
+      $amount.val(usdToBtc($amount.val()));
+    } else if ($target.is("#optionUSD:not(.active)")) {
+      $currencyLabel.html('<i class="fa fa-usd"></i>');
+      $amount.val(btcToUsd($amount.val()));
     }
   });
 };
