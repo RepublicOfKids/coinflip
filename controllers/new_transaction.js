@@ -27,7 +27,6 @@ exports.getNewTransaction = function(req, res, next) {
     },
     function(err, results) {
       if (err) {
-        console.log(err);
         return next(err);
       }
       var friends = results.getMyFriends;
@@ -38,9 +37,18 @@ exports.getNewTransaction = function(req, res, next) {
         friendsJson.push( { name : friend.name } );
       });
 
-      var balance_result = JSON.parse(results.userBalance);
-      var balance_amount = balance_result.amount;
-      var balance_currency = balance_result.currency;
+      var balance_amount;
+      var balance_currency = '';
+      var balance_result;
+      try {
+        balance_result = JSON.parse(results.userBalance);
+        balance_amount = balance_result.amount;
+        balance_currency = balance_result.currency;
+      } catch (err) {
+        // json parse can fail when access token is invalid
+        // need to start using refresh tokens to genereate new access tokens
+        balance_amount = "error parsing coinbase json";
+      }
 
       res.render('new_transaction', {
         title: 'New Transaction',
