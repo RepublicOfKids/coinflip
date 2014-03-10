@@ -32,10 +32,10 @@ util.inherits(Strategy, OAuth2Strategy);
 Strategy.prototype.userProfile = function(accessToken, done) {
   this._oauth2.get(this._userProfileURL, accessToken, function (err, body) {
     if (err) { return done(new InternalOAuthError('failed to fetch user profile', err)); }
-    
+
     try {
       var json = JSON.parse(body);
-      
+
       var profile = { provider: 'coinbase' };
       var user = json.users[0];
 
@@ -45,7 +45,7 @@ Strategy.prototype.userProfile = function(accessToken, done) {
 
       profile._raw = body;
       profile._json = user;
-      
+
       done(null, profile);
     } catch(e) {
       done(e);

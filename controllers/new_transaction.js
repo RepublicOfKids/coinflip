@@ -12,14 +12,17 @@ exports.getNewTransaction = function(req, res, next) {
   var token = _.findWhere(req.user.tokens, { kind: 'facebook' });
   graph.setAccessToken(token.accessToken);
   async.parallel({
-     getMyFriends: function(done) {
+      getMyFriends: function(done) {
         graph.get(req.user.facebook + '/friends', function(err, friends) {
           done(err, friends.data);
         });
-     },
-     getExchangeRates: function(done) {
-       coinbase_api.getExchangeRates({}, done);
-     }
+      },
+      getExchangeRates: function(done) {
+        coinbase_api.getExchangeRates({}, done);
+      },
+      getUserInfo: function(done) {
+        coinbase_api.getBalance({user: req.user.id}, done);
+      }
   },
   function(err, results) {
     if (err) { return next(err); }
@@ -30,7 +33,6 @@ exports.getNewTransaction = function(req, res, next) {
     _.each(friends, function(friend) {
       friendsJson.push( { name : friend.name } );
     });
-
 
     res.render('new_transaction', {
       title: 'New Transaction',
