@@ -16,10 +16,13 @@ exports.getNewTransaction = function(req, res, next) {
       getMyFriends: function(done) {
         graph.get(req.user.facebook + '/friends', function(err, friends) {
           done(err, friends.data);
-      });
-    },
+        });
+      },
       getExchangeRates: function(done) {
         coinbase_api.getExchangeRates({}, done);
+      },
+      getUserInfo: function(done) {
+        coinbase_api.getBalance({user: req.user.id}, done);
       }
     },
     function(err, results) {
@@ -34,8 +37,6 @@ exports.getNewTransaction = function(req, res, next) {
       _.each(friends, function(friend) {
         friendsJson.push( { name : friend.name } );
       });
-
-
       res.render('new_transaction', {
         title: 'New Transaction',
         dump: {

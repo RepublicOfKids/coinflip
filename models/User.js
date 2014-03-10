@@ -7,6 +7,7 @@ var userSchema = new mongoose.Schema({
   password: String,
 
   facebook: String,
+  coinbase: String,
   tokens: Array,
 
   profile: {
