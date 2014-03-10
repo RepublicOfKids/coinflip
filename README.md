@@ -46,7 +46,7 @@ node app.js
 
 Navigate your browser to `localhost:3000`.
 
-## Test
+## Running Tests
 
 To execute tests run:
 
