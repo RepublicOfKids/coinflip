@@ -21,8 +21,8 @@ exports.getNewTransaction = function(req, res, next) {
       getExchangeRates: function(done) {
         coinbase_api.getExchangeRates({}, done);
       },
-      getUserInfo: function(done) {
-        coinbase_api.getBalance({user: req.user.id}, done);
+      userBalance: function(done) {
+        coinbase_api.getBalance({user: req.user}, done);
       }
     },
     function(err, results) {
@@ -37,8 +37,15 @@ exports.getNewTransaction = function(req, res, next) {
       _.each(friends, function(friend) {
         friendsJson.push( { name : friend.name } );
       });
+
+      var balance_result = JSON.parse(results.userBalance);
+      var balance_amount = balance_result.amount;
+      var balance_currency = balance_result.currency;
+
       res.render('new_transaction', {
         title: 'New Transaction',
+        balance_amount: balance_amount,
+        balance_currency: balance_currency,
         dump: {
           friends: friendsJson,
           rates: exchangeRates
