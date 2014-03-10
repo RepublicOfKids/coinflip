@@ -34,8 +34,6 @@ exports.getNewTransaction = function(req, res, next) {
       friendsJson.push( { name : friend.name } );
     });
 
-    console.log(results.getUserInfo);
-
     res.render('new_transaction', {
       title: 'New Transaction',
       dump: {
