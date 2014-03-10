@@ -2,7 +2,6 @@
 
 ## Install
 
-
 ### Getting started
 
 Coinflip runs on node v0.10.26+. If you dont have nodejs on your hardware use something like [homebrew](http://brew.sh/) to install it:
@@ -46,3 +45,11 @@ node app.js
 ```
 
 Navigate your browser to `localhost:3000`.
+
+## Test
+
+To execute tests run:
+
+````
+npm test
+````
