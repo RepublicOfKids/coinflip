@@ -88,6 +88,7 @@ passport.use(new FacebookStrategy(secrets.facebook, function(req, accessToken, r
  */
 
 passport.use(new CoinbaseStrategy(secrets.coinbase, function(req, accessToken, refreshToken, profile, done) {
+  console.log(refreshToken);
   if (req.user) {
     User.findOne({ $or: [{ coinbase: profile.id }, { email: profile.email }] }, function(err, existingUser) {
       if (!existingUser) {
@@ -96,7 +97,11 @@ passport.use(new CoinbaseStrategy(secrets.coinbase, function(req, accessToken, r
       } else { // for now just overwriting the existing user (there should already be a facebook account linked)
         User.findById(req.user.id, function(err, user) {
           user.coinbase = profile._json.user.id;
-          user.tokens.push({ kind: 'coinbase', accessToken: accessToken });
+          user.tokens.push({
+            kind: 'coinbase',
+            accessToken: accessToken,
+            refreshToken: refreshToken
+          });
           user.profile.name = user.profile.name || profile.displayName;
           user.save(function(err) {
             req.flash('info', { msg: 'Coinbase account has been linked.' });

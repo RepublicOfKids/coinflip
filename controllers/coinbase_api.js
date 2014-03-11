@@ -25,7 +25,6 @@ exports.sendMoney = function(params, cb) {
   }
 };
 
-// @Todo: Figure this out.
 exports.getBalance = function(params, cb) {
   var accessToken = getCoinbaseAccessToken(params.user);
   if (!accessToken) {
