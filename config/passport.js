@@ -88,7 +88,6 @@ passport.use(new FacebookStrategy(secrets.facebook, function(req, accessToken, r
  */
 
 passport.use(new CoinbaseStrategy(secrets.coinbase, function(req, accessToken, refreshToken, profile, done) {
-  console.log(refreshToken);
   if (req.user) {
     User.findOne({ $or: [{ coinbase: profile.id }, { email: profile.email }] }, function(err, existingUser) {
       if (!existingUser) {
