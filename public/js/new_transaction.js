@@ -11,7 +11,7 @@ cf.apps.new_transaction = function() {
 };
 
 cf.apps.new_transaction.prototype.initializeForm = function() {
-  var $transactionRecipient = $('#transactionRecipient');
+  var $transactionRecipient = $('.transactionRecipient');
   if ($transactionRecipient.length) {
     var names = new Bloodhound({
       datumTokenizer: function(d) {
@@ -31,14 +31,15 @@ cf.apps.new_transaction.prototype.initializeForm = function() {
 
   $(".currency-btns label").on('click', function(event) {
     var $target = $(event.target);
-    var $amount = $('#amount');
-    var $currencyLabel = $('#currencyLabel');
+    var $amount = $('.amount');
+    var $currencyLabel = $('.currencyLabel');
 
     // TODO: Check if valid currency format
-    if ($target.is("#optionBTC:not(.active)")) {
+    // TODO: If you click fast enough, the conversion will be incorrect
+    if ($target.is(".optionBTC:not(.active)")) {
       $currencyLabel.html('<i class="fa fa-btc"></i>');
       $amount.val(usdToBtc($amount.val()));
-    } else if ($target.is("#optionUSD:not(.active)")) {
+    } else if ($target.is(".optionUSD:not(.active)")) {
       $currencyLabel.html('<i class="fa fa-usd"></i>');
       $amount.val(btcToUsd($amount.val()));
     }

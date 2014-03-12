@@ -13,12 +13,11 @@ var getCoinbaseAccessToken = function (user) {
 
 exports.getExchangeRates = function(params, cb) {
   request.get({ url: BASE_URI + "/currencies/exchange_rates" }, function (error, response, rates) {
->>>>>>> a50f8f7059c6d347c99ffd27e33ac035d59b66d4
     cb(error, rates);
   });
 };
 
-// @Todo: Figure this out.
+// TODO: Figure this out.
 exports.sendMoney = function(params, cb) {
   var accessToken = getCoinbaseAccessToken(params.user);
   if (!accessToken) {
@@ -26,7 +25,7 @@ exports.sendMoney = function(params, cb) {
   }
 };
 
-// @Todo: Figure this out.
+// TODO: Figure this out.
 exports.getBalance = function(params, cb) {
   var accessToken = getCoinbaseAccessToken(params.user);
   if (!accessToken) {

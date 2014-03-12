@@ -52,6 +52,7 @@ exports.getNewTransaction = function(req, res, next) {
       }
 
       res.render('new_transaction', {
+        controllerJs: 'new_transaction',
         title: 'New Transaction',
         balance_amount: balance_amount,
         balance_currency: balance_currency,

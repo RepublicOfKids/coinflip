@@ -15,19 +15,19 @@ block content
         i.fa.fa-user
       .col-xs-8
         .example-numbers
-          input#transactionRecipient.form-control(class='typeahead', type='text', autofocus=true, autocomplete='off', spellcheck='false', dir='auto')
+          input.form-control.transactionRecipient(class='typeahead', type='text', autofocus=true, autocomplete='off', spellcheck='false', dir='auto')
     .form-group
-      label#currencyLabel(class='col-xs-2 control-label', for='amount')
+      label.currencyLabel(class='col-xs-2 control-label', for='amount')
         i.fa.fa-btc
       .col-xs-8
         .btn-group.btn-group-justified.currency-btns(data-toggle='buttons')
-          label.btn.btn-primary.active#optionBTC
+          label.btn.btn-primary.optionBTC.active
             input(type='radio')
             i.fa.fa-btc
-          label.btn.btn-primary#optionUSD
+          label.btn.btn-primary.optionUSD
             input(type='radio')
             i.fa.fa-usd
-        input.form-control(type='text', name='amount', id='amount')
+        input.form-control.amount(type='text', name='amount')
     .form-group
       label(class='col-xs-2 control-label', for='message')
         i.fa.fa-comment
