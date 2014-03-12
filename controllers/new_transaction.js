@@ -12,6 +12,7 @@ exports.getNewTransaction = function(req, res, next) {
   var token = _.findWhere(req.user.tokens, { kind: 'facebook' });
   graph.setAccessToken(token.accessToken);
   async.parallel({
+     // TODO: Filter out friends that do not match a user in DB
      getMyFriends: function(done) {
         graph.get(req.user.facebook + '/friends', function(err, friends) {
           done(err, friends.data);
