@@ -17,7 +17,7 @@ exports.getExchangeRates = function(params, cb) {
   });
 };
 
-// @Todo: Figure this out.
+// TODO: Figure this out.
 exports.sendMoney = function(params, cb) {
   var accessToken = getCoinbaseAccessToken(params.user);
   if (!accessToken) {
@@ -25,7 +25,7 @@ exports.sendMoney = function(params, cb) {
   }
 };
 
-// @Todo: Figure this out.
+// TODO: Figure this out.
 exports.getBalance = function(params, cb) {
   var accessToken = getCoinbaseAccessToken(params.user);
   if (!accessToken) {

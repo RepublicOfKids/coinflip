@@ -11,6 +11,7 @@ var coinbase_api = require('./coinbase_api.js');
 exports.getNewTransaction = function(req, res, next) {
   var token = _.findWhere(req.user.tokens, { kind: 'facebook' });
   graph.setAccessToken(token.accessToken);
+  // TODO: Filter out friends that do not match a user in DB
   async.parallel(
     {
       getMyFriends: function(done) {
@@ -51,6 +52,7 @@ exports.getNewTransaction = function(req, res, next) {
       }
 
       res.render('new_transaction', {
+        controllerJs: 'new_transaction',
         title: 'New Transaction',
         balance_amount: balance_amount,
         balance_currency: balance_currency,

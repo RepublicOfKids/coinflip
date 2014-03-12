@@ -17,3 +17,8 @@ html
     include partials/footer
     include partials/dump
     != js('application')
+    if controllerJs
+      script.
+        $(document).ready(function() {
+          cf.currentApp = new window.cf.apps.#{controllerJs}();
+        });

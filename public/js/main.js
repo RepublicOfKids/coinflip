@@ -1,19 +1,7 @@
-$(document).ready(function() {
-  var $transactionRecipient = $('#transactionRecipient');
-  if ($transactionRecipient.length) {
-    var names = new Bloodhound({
-      datumTokenizer: function(d) {
-        return Bloodhound.tokenizers.whitespace(d.name);
-      },
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: window.cf.dump.friends
-    });
+if (typeof window.cf === 'undefined') {
+  window.cf = { apps: {} };
+}
 
-    names.initialize();
-
-    $transactionRecipient.typeahead(null, {
-      displayKey: 'name',
-      source: names.ttAdapter()
-    });
-  }
-});
+if (typeof window.cf.apps === 'undefined') {
+  window.cf.apps = {};
+}
