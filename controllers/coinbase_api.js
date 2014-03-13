@@ -1,5 +1,6 @@
 var request = require('request');
 var _ = require('underscore');
+var coinlib = require('../modules/coinlib');
 
 var BASE_URI = "https://coinbase.com/api/v1";
 
@@ -31,13 +32,8 @@ exports.getBalance = function(params, cb) {
   if (!accessToken) {
     cb(new Error('No Coinbase access token provided.'));
   }
-  var options = {
-    url: BASE_URI + "/account/balance",
-    qs: {
-      access_token: accessToken
-    }
-  };
-  request.get(options, function (error, response, result) {
-    cb(error, result);
+  coinlib.setAccessToken(accessToken);
+  coinlib.get("/account/balance", {}, function (error, response) {
+    cb(error, response);
   });
 };
