@@ -1,6 +1,6 @@
 {
   "name": "Coinflip",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/RepublicOfKids/coinflip.git"
@@ -29,6 +29,7 @@
     "passport-facebook": "~1.0.2",
     "passport-local": "~0.1.6",
     "passport-oauth": "~1.0.0",
+    "qs": "~0.5.6",
     "request": "~2.34.0",
     "underscore": "~1.6.0",
     "uglify-js": "~2.4.12",
