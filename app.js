@@ -19,7 +19,6 @@ var connectAssets = require('connect-assets');
 
 var homeController = require('./controllers/home');
 var userController = require('./controllers/user');
-var contactController = require('./controllers/contact');
 var newTransactionController = require('./controllers/new_transaction');
 var forgotController = require('./controllers/forgot');
 var resetController = require('./controllers/reset');
@@ -109,8 +108,6 @@ app.get('/reset/:token', resetController.getReset);
 app.post('/reset/:token', resetController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
-app.get('/contact', contactController.getContact);
-app.post('/contact', contactController.postContact);
 app.get('/new_transaction', newTransactionController.getNewTransaction);
 app.post('/new_transacation', newTransactionController.postNewTransaction);
 app.get('/account', passportConf.isAuthenticated, userController.getAccount);

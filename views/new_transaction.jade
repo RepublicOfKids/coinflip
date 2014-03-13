@@ -2,43 +2,45 @@ extends layout
 
 block content
 
-  div.alert.alert-info
-    div Balance: #{balance_amount} #{balance_currency}
+  div.row
 
-  .page-header
-    h3 New Transaction
+    div.col-sm-12
+      div.alert.alert-info
+        div Balance: #{balance_amount} #{balance_currency}
 
-  form.form-horizontal(role='form', method='POST')
-    input(type='hidden', name='_csrf', value=token)
-    .form-group
-      label(class='col-xs-2 control-label', for='name')
-        i.fa.fa-user
-      .col-xs-8
-        .example-numbers
-          input.form-control.transactionRecipient(class='typeahead', type='text', autofocus=true, autocomplete='off', spellcheck='false', dir='auto')
-    .form-group
-      label.currencyLabel(class='col-xs-2 control-label', for='amount')
-        i.fa.fa-btc
-      .col-xs-8
-        .btn-group.btn-group-justified.currency-btns(data-toggle='buttons')
-          label.btn.btn-primary.optionBTC.active
-            input(type='radio')
+    div.col-sm-12
+      .page-header
+        h3 New Transaction
+
+  div.row
+    div.col-md-6.col-xs-12
+      form.form-horizontal(role='form', method='POST')
+        input(type='hidden', name='_csrf', value=token)
+        .form-group
+          label(class='hidden-xs col-sm-1 control-label', for='name')
+            i.fa.fa-user
+          .col-sm-11.col-xs-12
+            .example-numbers
+              input.form-control.transactionRecipient(class='typeahead', type='text', autofocus=true, autocomplete='off', spellcheck='false', dir='auto', placeholder='Name')
+        .form-group
+          label.currencyLabel(class='hidden-xs col-sm-1 control-label', for='amount')
             i.fa.fa-btc
-          label.btn.btn-primary.optionUSD
-            input(type='radio')
-            i.fa.fa-usd
-        input.form-control.amount(type='text', name='amount')
-    .form-group
-      label(class='col-xs-2 control-label', for='message')
-        i.fa.fa-comment
-      .col-xs-8
-        textarea.form-control(type='text', name='message', id='message', rows='7')
-    .form-group
-      .col-xs-offset-2.col-xs-2
-        button.btn.btn-pay(type='submit')
-          i.fa.fa-btc
-          | Pay
-      .col-xs-2
-        button.btn.btn-charge(type='submit')
-          i.fa.fa-btc
-          | Charge
+          .col-sm-11.col-xs-12
+            .btn-group.btn-group-justified.currency-btns(data-toggle='buttons')
+              label.btn.btn-primary.optionBTC.active
+                input(type='radio')
+                i.fa.fa-btc
+              label.btn.btn-primary.optionUSD
+                input(type='radio')
+                i.fa.fa-usd
+            input.form-control.amount(type='text', name='amount', placeholder='Amount')
+        .form-group
+          label(class='hidden-xs col-sm-1 control-label', for='message')
+            i.fa.fa-comment
+          .col-sm-11.col-xs-12
+            textarea.form-control(type='text', name='message', id='message', rows='7', placeholder='Message')
+        .form-group
+          .col-sm-offset-1.col-sm-11
+            button.btn.btn-pay(type='submit')
+              i.fa.fa-btc
+              | Pay
